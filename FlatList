@@ -1,0 +1,43 @@
+import React from "react";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+
+const users = [
+  { id: "1", name: "Anwar", age: 23 },
+  { id: "2", name: "Shahin", age: 23 },
+  { id: "3", name: "Ganesh", age: 23 },
+  { id: "4", name: "Siddu", age: 23 },
+];
+
+export default function SimpleFlatList() {
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={users}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Text style={styles.name}>{item.id}</Text>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.name}>{item.age}</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+    paddingHorizontal: 16,
+  },
+  card: {
+    backgroundColor: "#e0f7fa",
+    padding: 20,
+    marginVertical: 8,
+    borderRadius: 10,
+  },
+  name: {
+    fontSize: 18,
+  },
+});
