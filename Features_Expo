@@ -1,0 +1,19 @@
+//Speacial features , components and properties of expo 
+
+| Component / API                                      | Purpose                                                         |
+| ---------------------------------------------------- | --------------------------------------------------------------- |
+| `Camera` (from `expo-camera`)                        | Open and use the device camera.                                 |
+| `Location` (from `expo-location`)                    | Get GPS location, track movement.                               |
+| `Notifications` (from `expo-notifications`)          | Handle push/local notifications.                                |
+| `Permissions` (from `expo-permissions`)              | Ask for camera/location access. *(Auto-handled in latest SDKs)* |
+| `ImagePicker` (from `expo-image-picker`)             | Pick images/videos from gallery.                                |
+| `FileSystem` (from `expo-file-system`)               | Read/write files on the device.                                 |
+| `Sharing` (from `expo-sharing`)                      | Share files via WhatsApp, Email, etc.                           |
+| `MediaLibrary` (from `expo-media-library`)           | Save and manage media in gallery.                               |
+| `SplashScreen` (from `expo-splash-screen`)           | Control app startup splash screen.                              |
+| `Haptics` (from `expo-haptics`)                      | Vibrations or tactile feedback.                                 |
+| `ScreenOrientation` (from `expo-screen-orientation`) | Lock/rotate screen.                                             |
+| `SecureStore`                                        | Save sensitive data (tokens, passwords).                        |
+| `Constants`                                          | Get app info like version, device name.                         |
+
+
