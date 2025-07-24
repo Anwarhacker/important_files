@@ -1,0 +1,95 @@
+// file based routing in expo react native 
+
+in the "app" folder/dictory that are the root files/folders 
+App
+-> index.jsx
+-> _layout.jsx // these are the root files
+
+App
+-> (tabs)
+     -> home.jsx
+     -> history.jsx
+     -> profile.jsx
+              these are the tabs (this displays these 3 tab in footer )
+
+
+
+
+these the documentation the index.jsx is the root or ("/") route 
+   there are some cases sometimes we want "/" route to be display first (no tabs ) and 
+   some time we want tabs at the starting/route("/")  
+
+ **  if we want tabs on starting or ("/")
+
+   that can bhi achive giving the positions like below 
+
+   root ("_layout.jsx")
+
+   
+import { Stack } from "expo-router";
+import "../global.css";
+
+export default function RootLayout() {
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="(tabs)" />
+
+      {/* Add other screens as needed */}
+    </Stack>
+  );
+}
+
+
+//this displays "/" route index.jsx file content at the first 
+
+** if we want tabs on starting we can achive by just 
+
+root ("_layout.jsx")
+
+   
+import { Stack } from "expo-router";
+import "../global.css";
+
+export default function RootLayout() {
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="index" />
+      {/* Add other screens as needed */}
+    </Stack>
+  );
+}
+
+
+--- based on this that routes will handle 
+
+you can use as many as tabs by just creating (tabs) ,(home),(variable) bus use Tabs - from expo
+
+
+
+** if you want to create single route you can achive by just 
+
+App
+-->testing (folder)
+   -->index.jsx
+--> index.jsx
+--> _layout.jsx
+
+
+call using folder name "/testing"
+
+
+another example 
+
+App
+-->testing (folder)
+   -->index.jsx
+-->settings (folder)
+   -->index.jsx
+   
+--> index.jsx
+--> _layout.jsx
+
+  call using folder name "/testing"
+  call using folder name "/setings"
