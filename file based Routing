@@ -93,3 +93,5 @@ App
 
   call using folder name "/testing"
   call using folder name "/setings"
+
+using useRouter();
