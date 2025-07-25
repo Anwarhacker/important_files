@@ -27,6 +27,8 @@ npx expo customize   =space to confirm and downkey to next one then enter
 
 // create a global.css in the root 
 --copy paste from GitHub -- important files (repo)
+--> import this in App/_layout.jsx 
+
 
 //To start server
 
