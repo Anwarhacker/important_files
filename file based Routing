@@ -112,16 +112,17 @@ import React from "react";
 
 const _layout = () => {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" size={size} color={color} />
-          ),
-        }}
-      />
+   <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: "white", // ✅ this changes that white background!
+          borderTopWidth: 0,
+        },
+        tabBarActiveTintColor: "#00f",
+        tabBarInactiveTintColor: "#aaa",
+      }}
+    >
       <Tabs.Screen
         name="history"
         options={{
