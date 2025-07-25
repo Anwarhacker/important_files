@@ -25,10 +25,8 @@ npx expo customize   =space to confirm and downkey to next one then enter
  // update the these files after generated manually 
 --copy paste from GitHub -- important files (repo)
 
-//To start the server
-
-npm start
-
+// create a global.css in the root 
+--copy paste from GitHub -- important files (repo)
 
 //To start server
 
