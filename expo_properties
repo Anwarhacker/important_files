@@ -5,3 +5,4 @@
 3 ) ScreenOrientation --> for rotating screen (porttrat , landscape)
 4 ) expo-sensors --> sensor (Accelerometer, Gyroscope, Magnetometer, Barometer)
 4 ) react-native-paper --> is the excellent library to design text ,buttons ,cards anything and that have lots of properies ,mode explore each in detailed
+5 ) react-native-elements --> same like above 
