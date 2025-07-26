@@ -1,0 +1,96 @@
+//install the neccessory packages
+
+// App.js
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet, Vibration, Platform, Switch, SliderBase } from 'react-native';
+import Slider from '@react-native-community/slider'; // Run: npx expo install @react-native-community/slider
+
+export default function App() {
+  const [duration, setDuration] = useState(100);
+  const [looping, setLooping] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
+
+  const vibrateOnce = () => {
+    Vibration.vibrate(duration);
+  };
+
+  const vibratePattern = () => {
+    const pattern = [0, 300, 200, 600, 100, 400];
+    Vibration.vibrate(pattern);
+  };
+
+  const toggleLoop = (value) => {
+    setLooping(value);
+    if (value) {
+      const id = setInterval(() => {
+        Vibration.vibrate(duration);
+      }, duration + 300);
+      setIntervalId(id);
+    } else {
+      clearInterval(intervalId);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>🔔 Advanced Vibration Demo</Text>
+
+      <Text style={styles.label}>Vibration Duration: {duration}ms</Text>
+      <Slider
+        style={{ width: '100%' }}
+        minimumValue={50}
+        maximumValue={2000}
+        step={50}
+        value={duration}
+        onValueChange={setDuration}
+        minimumTrackTintColor="#00bcd4"
+        maximumTrackTintColor="#ccc"
+      />
+
+      <View style={styles.spacer} />
+      <Button title="Vibrate Once" onPress={vibrateOnce} />
+      <View style={styles.spacer} />
+      <Button title="Custom Pattern" onPress={vibratePattern} />
+
+      <View style={styles.spacer} />
+      <View style={styles.row}>
+        <Text style={styles.label}>Loop Vibration:</Text>
+        <Switch value={looping} onValueChange={toggleLoop} />
+      </View>
+
+      {Platform.OS === 'web' && (
+        <Text style={{ color: 'red', marginTop: 20 }}>
+          ⚠️ Vibration not supported on Web
+        </Text>
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  spacer: {
+    height: 20,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+});
