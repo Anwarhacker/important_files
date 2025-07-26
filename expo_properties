@@ -2,3 +2,4 @@
 
 1 ) heptics --> for vibration 
 2 ) splash screen --> while loading app
+3 ) ScreenOrientation --> for rotating screen (porttrat , landscape)
