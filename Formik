@@ -1,0 +1,120 @@
+//best example code of formik for form handling 
+-- yup for validations -(errors and all)
+-- for password --  secureTextEntry
+--  keyboardType="email-address"
+
+
+
+
+// SignupForm.jsx
+import React from "react";
+import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
+import { Formik } from "formik";
+import * as Yup from "yup";
+
+// ✅ Yup Schema for Validation
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .min(3, "Name must be at least 3 characters")
+    .required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
+
+export default function SignupForm() {
+  return (
+    <Formik
+      initialValues={{
+        name: "",
+        email: "",
+        password: "",
+      }}
+      validationSchema={validationSchema}
+      onSubmit={(values) => {
+        Alert.alert("Form Submitted", JSON.stringify(values, null, 2));
+      }}
+    >
+      {({
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        errors,
+        touched,
+      }) => (
+        <View style={styles.container}>
+          {/* Name Field */}
+          <Text style={styles.label}>Name</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your name"
+            onChangeText={handleChange("name")}
+            onBlur={handleBlur("name")}
+            value={values.name}
+          />
+          {touched.name &&
+            errors.name &&
+            ((<Text style={styles.error}>{errors.name}</Text>),
+            (<Text className="text-green-400">{errors.name}</Text>))}
+
+          {/* Email Field */}
+          <Text style={styles.label}>Email</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your email"
+            onChangeText={handleChange("email")}
+            onBlur={handleBlur("email")}
+            value={values.email}
+            keyboardType="email-address"
+          />
+          {touched.email && errors.email && (
+            <Text style={styles.error}>{errors.email}</Text>
+          )}
+
+          {/* Password Field */}
+          <Text style={styles.label}>Password</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your password"
+            secureTextEntry
+            onChangeText={handleChange("password")}
+            onBlur={handleBlur("password")}
+            value={values.password}
+          />
+          {touched.password && errors.password && (
+            <Text style={styles.error}>{errors.password}</Text>
+          )}
+
+          {/* Submit Button */}
+          <Button title="Sign Up" onPress={handleSubmit} />
+        </View>
+      )}
+    </Formik>
+  );
+}
+
+// 🖌️ Styles
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    marginTop: 50,
+  },
+  label: {
+    marginBottom: 4,
+    fontWeight: "bold",
+  },
+  input: {
+    height: 45,
+    borderColor: "#999",
+    borderWidth: 1,
+    borderRadius: 6,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  error: {
+    color: "red",
+    marginBottom: 10,
+  },
+});
